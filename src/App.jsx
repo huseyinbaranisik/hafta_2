@@ -315,7 +315,7 @@ function ResultsPage({ query, onSearch }) {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            model: "llama3-70b-8192",
+            model: "llama-3.1-8b-instant",
             messages: [
               {
                 role: "system",
@@ -331,10 +331,16 @@ function ResultsPage({ query, onSearch }) {
         });
         
         const data = await res.json();
+        
+        if (!res.ok) {
+          throw new Error(data.error?.message || "Sunucu hatası");
+        }
+        
         const answer = data.choices[0].message.content;
         setLongAnswer(answer);
       } catch (err) {
-        setLongAnswer("**Hata:** Üzgünüz, SoruX sunucularına şu an ulaşılamıyor. Lütfen internet bağlantınızı kontrol edin.");
+        console.error("SoruX API Error:", err);
+        setLongAnswer("**Hata:** Üzgünüz, SoruX sunucularına şu an ulaşılamıyor. Hata detayı: " + (err.message || "Bilinmeyen hata"));
       }
       setLoading(false);
     };
