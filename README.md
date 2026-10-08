@@ -7,6 +7,10 @@
   <img src="https://img.shields.io/badge/Lisans-MIT-green?style=for-the-badge" />
 </p>
 
+<p align="center">
+  <a href="https://youtu.be/CqNF36oEeqA"><strong>▶️ Proje Tanıtım Videosunu İzle</strong></a>
+</p>
+
 ---
 
 ### 📝 PROJE HAKKINDA
